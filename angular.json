@@ -128,9 +128,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+              "port": 4301,
               "browserTarget": "kryptran-ethereum:build:production"
             },
             "development": {
+              "open": true,
+              "port": 4300,
               "browserTarget": "kryptran-ethereum:build:development"
             }
           },

@@ -1,0 +1,66 @@
+
+<div class="card">
+  <div class="card-section card-section__right">
+    <span class="description"
+      [style.order]="1">
+      Thank you for getting involved in reforestation efforts in the <kbd>Amazon rainforest</kbd>!
+    </span>
+
+    <div class="card-section-body"
+      [style.order]="2">
+      <ng-container *ngTemplateOutlet="
+        !(errorWalletSubject$ | async)
+          ? AppTemplate
+            : ErrorTemplate
+      "></ng-container>
+    </div>
+
+    <span class="description"
+      [style.order]="3"
+      [style.margin-top]="'auto'">
+      Help us to reach our goal of <kbd>73mil</kbd> new trees planted in the North of Brazil
+    </span>
+  </div>
+
+  <div class="card-section card-section__left">
+    <span class="layer"
+      [style.order]="1"
+      [style.z-index]="2">
+      <span class="layer-title"
+        [style.order]="1">Reforest Amazon Rainforest!</span>
+      <span class="layer-subtitle"
+        [style.order]="2">Support UN's Sustainable Development reforestation efforts and plant a tree in Amazon!</span>
+    </span>
+
+    <img alt="Background Image Of Forest"
+      src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format"
+      srcset=""
+      [style.order]="1"
+      [style.z-index]="1" />
+  </div>
+</div>
+
+<!-- * Templates -->
+
+<ng-template #ErrorTemplate>
+  <span class="alert"
+    [innerHTML]="errorWalletSubject$ | async | sharedDomSanitizerHtml"></span>
+</ng-template>
+
+<ng-template #AppTemplate
+  [ngSwitch]="!(userWalletSubject$ | async)">
+  <blockchain-app-login *ngSwitchCase="true"
+    [loading]="!!(loadingSubject$ | async)"
+    (connect)="onConnectEventHandler()"></blockchain-app-login>
+
+  <blockchain-app-home *ngSwitchCase="false"
+    [address]="userWalletSubject$ | async"
+    [balance]="balanceSubject$ | async"
+    [currentFund]="currentFundSubject$ | async"
+    [donationList]="donationList"
+    [gasFee]="gasFeeSubject$ | async"
+    [loading]="!!(loadingSubject$ | async)"
+    [network]="networkSubject$ | async"
+    [threshold]="threshold"
+    (donate)="onDonateEventHandler($event)"></blockchain-app-home>
+</ng-template>

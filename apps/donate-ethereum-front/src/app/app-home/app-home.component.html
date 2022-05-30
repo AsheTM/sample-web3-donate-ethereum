@@ -1,0 +1,62 @@
+
+<div class="info">
+  <div class="info-label">Network name: </div>
+  <div class="info-value">{{ network | uppercase }}</div>
+</div>
+
+<div class="info">
+  <div class="info-label">Wallet Address: </div>
+  <div class="info-value">{{ address }}</div>
+</div>
+
+<div class="info">
+  <div class="info-label">Balance: </div>
+  <div class="info-value">
+    {{ balance | sharedWeiToEther | currency:'':'':'1.0-6' }} <img alt="Etherum Icon"
+      src="https://ethereum.org/static/a110735dade3f354a46fc2446cd52476/db4de/eth-home-icon.webp" />
+  </div>
+</div>
+
+<div class="info">
+  <div class="info-label">Gas Fee: </div>
+  <div class="info-value">{{ gasFee | currency:'':'':'1.0-6' }} wei</div>
+</div>
+
+<div class="donate">
+  <ng-container *ngFor="let donation of donationList">
+    <div *ngIf="{
+      donate: donation.amount | appHomeDisableDonate:balance:gasFee
+    }; let disable"
+      class="donate-button"
+      scss-disabled-text="Insufficient fund"
+      [class.donate-button__disabled]="disable.donate"
+      [class.donate-button__loading]="loading"
+      (click)="
+        disable.donate
+          || loading
+            || onDonateClickEventHandler(donation.amount)
+      ">
+      <img [alt]="donation.alt"
+        [src]="donation.src" />
+      <span class="label">{{ donation.description }}</span>
+      <span class="amount">
+        {{ donation.amount }} <img alt="Etherum Icon"
+          src="https://ethereum.org/static/a110735dade3f354a46fc2446cd52476/db4de/eth-home-icon.webp" />
+      </span>
+    </div>
+  </ng-container>
+</div>
+
+<div class="progress-bar">
+  <span>
+    <small>Total funds:</small> {{ currentFund | sharedWeiToEther | currency:'':'':'1.0-6' }} <img alt="Etherum Icon"
+      src="https://ethereum.org/static/a110735dade3f354a46fc2446cd52476/db4de/eth-home-icon.webp" />
+  </span>
+  <span>
+    <small>Funds needed:</small> {{ threshold | currency:'':'':'1.0-6' }} <img alt="Etherum Icon"
+      src="https://ethereum.org/static/a110735dade3f354a46fc2446cd52476/db4de/eth-home-icon.webp" />
+  </span>
+  <span *ngIf="isGoalReached"
+    [style.margin-top]="8 + 'px'"
+    [style.text-align]="'center'">Goal reached!</span>
+</div>

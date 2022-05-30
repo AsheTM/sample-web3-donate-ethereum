@@ -18,5 +18,6 @@
       "@blockchain/api-interfaces": ["libs/api-interfaces/src/index.ts"]
     }
   },
+  "files": ["./hardhat.config.ts"],
   "exclude": ["node_modules", "tmp"]
 }

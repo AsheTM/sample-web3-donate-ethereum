@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Standard Font';
+  src: url('/assets/Tw-Cen-MT-Condensed-Font.ttf');
+}
+
+:root{
+  --color-background-primary: #eaefe4;
+  --color-background-secondary: #ffffff;
+  --color-border-primary: #f3f6f0;
+  --color-border-secondary: #f4f6f3;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #5b5c5a;
+  --color-text-error: #de1f50;
+  --color-text-highlight: #62b725;
+  --color-text-default: #323331;
+
+  font-size: 12px;
+}
+
+
+html,
+body{
+  font-family: 'Standard Font';
+  font-size: 2rem;
+  letter-spacing: .5px;
+  word-spacing: 1px;
+  padding: 0;
+  margin: 0;
+}

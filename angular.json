@@ -71,6 +71,11 @@
       },
       "tags": []
     },
+    "donate-ethereum-hardhat": {
+      "root": "apps/donate-ethereum-hardhat",
+      "sourceRoot": "apps/donate-ethereum-hardhat",
+      "projectType": "application"
+    },
     "donate-ethereum-front": {
       "projectType": "application",
       "root": "apps/donate-ethereum-front",

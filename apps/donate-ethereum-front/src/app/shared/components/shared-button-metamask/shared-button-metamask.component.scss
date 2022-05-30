@@ -1,0 +1,10 @@
+
+:host{
+  background-color: #f68614dd;
+  &:hover{
+    background-color: #f68614ee;
+    &:focus{
+      background-color: #f68614ff;
+    }
+  }
+}

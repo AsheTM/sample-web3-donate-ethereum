@@ -1,0 +1,123 @@
+
+:host{
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  .donate{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+    padding: 16px 32px;
+    order: 2;
+    &-button{
+      position: relative;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: center;
+      padding: 16px;
+      border: 2px solid var(--color-border-secondary);
+      border-radius: 16px;
+      box-sizing: border-box;
+      transition: all .125s ease-in-out;
+      cursor: pointer;
+      user-select: none;
+      &:after,
+      &:before{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: inherit;
+        backdrop-filter: blur(2px) opacity(1);
+      }
+      &__disabled,
+      &__loading{
+        pointer-events: none;
+        user-select: none;
+      }
+      &__disabled{
+        &:before{
+          content: attr(scss-disabled-text);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-text-error);
+          font-weight: bold;
+          text-align: center;
+          padding: 24px;
+        }
+      }
+      &__loading{
+        &:after{
+          content: '';
+        }
+      }
+      img{
+        width: 56px;
+        margin-bottom: 8px;
+        -webkit-user-drag: none;
+      }
+      span{
+        &.amount{
+          display: inline-flex;
+          align-items: center;
+          color: var(--color-text-secondary);
+          font-size: 1.2rem;
+          word-spacing: 2px;
+          img{
+            width: 8px;
+            margin: {
+              inline: 5px;
+              bottom: 0;
+            };
+            -webkit-user-drag: none;
+          }
+        }
+        &.label{
+          color: var(--color-text-default);
+          line-height: 1.4;
+          font-size: 1.5rem;
+          word-spacing: -2px;
+        }
+      }
+    }
+  }
+  .progress-bar{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-inline: auto;
+    order: 3;
+    span{
+      color: var(--color-text-default);
+      img{
+        width: 8px;
+      }
+      small{
+        color: var(--color-text-secondary);
+      }
+    }
+  }
+  .info{
+    $margin-inline: 48px;
+    width: calc(90% - #{$margin-inline});
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 3px #{$margin-inline};
+    order: 1;
+    &-label{
+      min-width: 20%;
+      color: var(--color-text-secondary);
+      font-size: 1.2rem;
+    }
+    &-value{
+      color: var(--color-text-default);
+      font-size: 1.4rem;
+      img{
+        width: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+
+:host{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: var(--color-background-primary);
+  overflow: hidden;
+  .card{
+    $border-radius: 27px;
+    $spacing: $border-radius;
+    $translate: 8px;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    flex-flow: row nowrap;
+    border-radius: $border-radius;
+    margin: auto;
+    box-shadow: 0px 5px 8px 0px rgba(black, .25);
+    overflow: hidden;
+    &:before{
+      content: '';
+      position: absolute;
+      width: calc(60% + #{$spacing} * 2);
+      height: calc(60% + #{$spacing} * 2);
+      display: block;
+      border: $translate solid var(--color-border-primary);
+      border-radius: $border-radius * 2;
+      box-shadow: 0 0 8px 3px rgba(black, .05);
+      transform: translate(-$spacing - $translate, -$spacing - $translate);
+    }
+    &-section{
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      background-color: var(--color-background-secondary);
+      padding: 24px 16px;
+      box-sizing: border-box;
+      &__left{
+        width: 45%;
+        border-radius: $border-radius 0 0 $border-radius;
+        order: 1;
+        z-index: 1;
+        img{
+          position: absolute;
+          top: 0;
+          right: 24px;
+          bottom:0;
+          left: 0;
+          width: calc(100% + #{$border-radius});
+          height: 100%;
+          max-height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        span{
+          $padding-inline: $border-radius;
+          display: flex;
+          color: var(--color-text-primary);
+          padding: {
+            block: 8px;
+            inline: $padding-inline / 2;
+          };
+          &.layer{
+            position: absolute;
+            top: 0;
+            right: -$border-radius;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: rgba(black, .25);
+            &-title{
+              font-size: 4rem;
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-top: auto;
+            }
+            &-subtitle{
+              line-height: 0.9;
+              margin-bottom: 16px;
+            }
+          }
+        }
+      }
+      &__right{
+        width: 55%;
+        border-radius: $border-radius;
+        overflow: hidden;
+        order: 2;
+        z-index: 2;
+        ::ng-deep span{
+          &.alert{
+            color: var(--color-text-error);
+            line-height: 1;
+            text-align: center;
+            margin: 8px auto;
+            kbd{
+              font-weight: bold;
+            }
+          }
+          &.description{
+            opacity: .8;
+            color: var(--color-text-secondary);
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin: 8px auto;
+            kbd{
+              color: var(--color-text-highlight);
+            }
+          }
+          kbd{
+            font-family: inherit !important;
+          }
+        }
+      }
+      &-body{
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

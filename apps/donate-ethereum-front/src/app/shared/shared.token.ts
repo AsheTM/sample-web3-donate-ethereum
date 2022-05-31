@@ -1,4 +1,4 @@
-import { InjectionToken } from "@angular/core";
+import { InjectionToken, isDevMode } from "@angular/core";
 
 import { TSharedSupportedNetworks } from "./types";
 
@@ -10,7 +10,7 @@ export const SHARED_TOKEN_SUPPORTED_NETWORKS: InjectionToken<TSharedSupportedNet
       0x3:    'Ropsten',
       0x4:    'Rinkeby',
       0x5:    'Goerli',
-      0x539:  'Localhost'
+      ...(isDevMode() ? { 0x539:  'Localhost' } : {})
     }),
     providedIn: 'root'
   });

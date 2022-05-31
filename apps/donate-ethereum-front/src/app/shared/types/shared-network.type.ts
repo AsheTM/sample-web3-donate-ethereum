@@ -1,2 +1,2 @@
 
-export type TSharedSupportedNetworks = Readonly<Record<`0x${number}` | number, string>>;
+export type TSharedSupportedNetworks = Readonly<Partial<Record<`0x${number}` | number, string>>>;

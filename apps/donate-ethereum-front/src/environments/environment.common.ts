@@ -2,16 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { environmentCoreForRootCommon } from "./environment.common";
-import { TEnvironement } from "./environment.type";
+import { TEnvironmentConfiguration } from "./environment.type";
 
 
-export const environment: TEnvironement = {
-  core:       {
-    forRoot: environmentCoreForRootCommon
-  },
-  production: false,
-  shared:     null
+export const environmentCoreForRootCommon: TEnvironmentConfiguration['forRoot'] = {
+  threshold:  100,
+  wallet:     '0x6f281E5649cF29FbB68f9aCDc9005892355740b1'
 };
 
 /*

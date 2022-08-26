@@ -14,9 +14,3 @@ export const SHARED_TOKEN_SUPPORTED_NETWORKS: InjectionToken<TSharedSupportedNet
     }),
     providedIn: 'root'
   });
-
-export const SHARED_TOKEN_WEB3:               InjectionToken<any>
-  = new InjectionToken<any>('SHARED_TOKEN_WEB3', {
-    factory:    () => (window as any).ethereum,
-    providedIn: 'root'
-  });

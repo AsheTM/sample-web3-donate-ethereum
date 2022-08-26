@@ -18,30 +18,31 @@ import { TAppHomeDonation, TAppHomeDonationList } from './app-home';
 export class AppComponent implements OnInit {
 
   readonly balanceSubject$:             Observable<string | undefined>
-    = this._appService.balanceSubjectApp$;
+    = this._appService.balanceApp$;
   readonly errorWalletSubject$:         Observable<string | undefined>
     = this._appService.errorWalletSubjectApp$;
   readonly currentFundSubject$:         Observable<string | undefined>
-    = this._appService.currentFundSubjectApp$;
+    = this._appService.currentFundApp$;
   readonly donationList:                TAppHomeDonationList
     = this._appService.donationListApp;
   readonly gasFeeSubject$:              Observable<string | undefined>
-    = this._appService.gasFeeSubjectApp$;
+    = this._appService.gasFeeApp$;
   readonly loadingSubject$:             Observable<boolean>
     = this._appService.loadingSubjectApp$;
   readonly networkSubject$:             Observable<Network['name'] | undefined>
-    = this._appService.networkSubjectApp$;
+    = this._appService.networkApp$;
   readonly threshold:                   TAppConfigurationCoreRoot['threshold']
     = this._appService.thresholdApp;
   readonly userWalletSubject$:          Observable<string | undefined>
-    = this._appService.userWalletSubjectApp$;
+    = this._appService.userWalletApp$;
 
   constructor(private readonly _appService: AppService) { }
 
   ngOnInit(): void {
     this._appService.checkIfMetaMaskWalletIsInstalled();
-    this._appService.allowOnlySupportedNetworks();
-    this._appService.resumeWalletSession();
+    this._appService.listenAccountChangeEvent();
+    this._appService.listenDisconnectChangeEvent();
+    this._appService.listenNetworkChangeEvent();
   }
 
   onConnectEventHandler(): void {

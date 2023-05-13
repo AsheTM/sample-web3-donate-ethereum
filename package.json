@@ -1,16 +1,16 @@
 {
-  "name": "web3-sample",
+  "name": "sample-web3-donate-ethereum",
   "version": "1.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
-    "start:donate-ethereum-hardhat": "hardhat node",
-    "start:donate-ethereum-hardhat:wallets": "hardhat wallets",
-    "start:donate-ethereum-front": "nx serve donate-ethereum-front",
+    "start:hardhat": "hardhat node",
+    "start:hardhat:wallets": "hardhat wallets",
+    "start:front": "nx serve front",
     "build": "nx build",
-    "build:donate-ethereum-front": "nx build donate-ethereum-front",
+    "build:front": "nx build front",
     "test": "nx test"
   },
   "private": true,

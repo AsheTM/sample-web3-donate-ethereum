@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('donate-ethereum-front', () => {
+describe('sample-web3-donate-ethereum-front', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('donate-ethereum-front', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to donate-ethereum-front!');
+    getGreeting().contains('Welcome to sample-web3-donate-ethereum-front!');
   });
 });

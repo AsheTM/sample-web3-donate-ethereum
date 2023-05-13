@@ -4,99 +4,32 @@
   },
   "version": 1,
   "projects": {
-    "api": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
-      "projectType": "application",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/api",
-            "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
-          "options": {
-            "jestConfig": "apps/api/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
-    },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
-          }
-        }
-      },
-      "tags": []
-    },
-    "donate-ethereum-hardhat": {
-      "root": "apps/donate-ethereum-hardhat",
-      "sourceRoot": "apps/donate-ethereum-hardhat",
+    "hardhat": {
+      "root": "apps/hardhat",
+      "sourceRoot": "apps/hardhat",
       "projectType": "application"
     },
-    "donate-ethereum-front": {
+    "front": {
       "projectType": "application",
-      "root": "apps/donate-ethereum-front",
-      "sourceRoot": "apps/donate-ethereum-front/src",
+      "root": "apps/front",
+      "sourceRoot": "apps/front/src",
       "prefix": "blockchain",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/donate-ethereum-front",
-            "index": "apps/donate-ethereum-front/src/index.html",
-            "main": "apps/donate-ethereum-front/src/main.ts",
-            "polyfills": "apps/donate-ethereum-front/src/polyfills.ts",
-            "tsConfig": "apps/donate-ethereum-front/tsconfig.app.json",
+            "outputPath": "dist/apps/front",
+            "index": "apps/front/src/index.html",
+            "main": "apps/front/src/main.ts",
+            "polyfills": "apps/front/src/polyfills.ts",
+            "tsConfig": "apps/front/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "apps/donate-ethereum-front/src/favicon.ico",
-              "apps/donate-ethereum-front/src/assets"
+              "apps/front/src/favicon.ico",
+              "apps/front/src/assets"
             ],
-            "styles": ["apps/donate-ethereum-front/src/styles.scss"],
+            "styles": ["apps/front/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -115,8 +48,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/donate-ethereum-front/src/environments/environment.ts",
-                  "with": "apps/donate-ethereum-front/src/environments/environment.prod.ts"
+                  "replace": "apps/front/src/environments/environment.ts",
+                  "with": "apps/front/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -132,8 +65,8 @@
             "netlify": {
               "fileReplacements": [
                 {
-                  "replace": "apps/donate-ethereum-front/src/environments/environment.ts",
-                  "with": "apps/donate-ethereum-front/src/environments/environment.netlify.ts"
+                  "replace": "apps/front/src/environments/environment.ts",
+                  "with": "apps/front/src/environments/environment.netlify.ts"
                 }
               ]
             }
@@ -145,59 +78,59 @@
           "configurations": {
             "production": {
               "port": 4301,
-              "browserTarget": "donate-ethereum-front:build:production"
+              "browserTarget": "front:build:production"
             },
             "development": {
               "open": true,
               "port": 4300,
-              "browserTarget": "donate-ethereum-front:build:development"
+              "browserTarget": "front:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "apps/donate-ethereum-front/proxy.conf.json"
+            "proxyConfig": "apps/front/proxy.conf.json"
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "donate-ethereum-front:build"
+            "browserTarget": "front:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/donate-ethereum-front/src/**/*.ts",
-              "apps/donate-ethereum-front/src/**/*.html"
+              "apps/front/src/**/*.ts",
+              "apps/front/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/donate-ethereum-front"],
+          "outputs": ["coverage/apps/front"],
           "options": {
-            "jestConfig": "apps/donate-ethereum-front/jest.config.js",
+            "jestConfig": "apps/front/jest.config.js",
             "passWithNoTests": true
           }
         }
       },
       "tags": []
     },
-    "donate-ethereum-front-e2e": {
-      "root": "apps/donate-ethereum-front-e2e",
-      "sourceRoot": "apps/donate-ethereum-front-e2e/src",
+    "front-e2e": {
+      "root": "apps/front-e2e",
+      "sourceRoot": "apps/front-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/donate-ethereum-front-e2e/cypress.json",
-            "devServerTarget": "donate-ethereum-front:serve:development"
+            "cypressConfig": "apps/front-e2e/cypress.json",
+            "devServerTarget": "front:serve:development"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "donate-ethereum-front:serve:production"
+              "devServerTarget": "front:serve:production"
             }
           }
         },
@@ -205,12 +138,12 @@
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/donate-ethereum-front-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/front-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["donate-ethereum-front"]
+      "implicitDependencies": ["front"]
     }
   }
 }

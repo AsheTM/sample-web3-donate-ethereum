@@ -4,6 +4,6 @@ import '@nomiclabs/hardhat-waffle';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
-import hardhatConfig from './apps/donate-ethereum-hardhat/main';
+import hardhatConfig from './apps/hardhat/main';
 
 export default hardhatConfig;

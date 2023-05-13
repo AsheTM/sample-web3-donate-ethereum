@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'donate-ethereum-front',
+  displayName: 'sample-web3-donate-ethereum-front',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/donate-ethereum-front',
+  coverageDirectory: '../../coverage/apps/front',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

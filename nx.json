@@ -46,5 +46,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "donate-ethereum-front"
+  "defaultProject": "front"
 }

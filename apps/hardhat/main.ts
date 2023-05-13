@@ -4,7 +4,7 @@ import { task } from 'hardhat/config';
 import { HardhatNetworkAccountConfig, HardhatNetworkAccountsConfig, HardhatNetworkConfig } from 'hardhat/types';
 
 
-['./.env', './apps/donate-ethereum-hardhat/.env'].forEach((path: string) => {
+['./.env', './apps/hardhat/.env'].forEach((path: string) => {
   dotenv.config({ path })
 });
 
